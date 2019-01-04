@@ -109,19 +109,19 @@
 			title: {
 				text: '登录统计(演示)',
 				subtext: 'Demo',
-				left: 'right',
+				left: 'center',
 				top: 'top',
 				textStyle: {
 					color: '#fff'
 				},
-			    show: false
+			    show: true
 			},
 			tooltip: {
-			  show: true,
+			  show: false,
 			  position: ['50%', '50%']
 			},
 		    toolbox: {
-				show : true,                                 //是否显示工具栏组件
+				show : false,                                 //是否显示工具栏组件
 				orient:"horizontal",                        //工具栏 icon 的布局朝向'horizontal' 'vertical'
 				itemSize:15,                                 //工具栏 icon 的大小
 				itemGap:10,                                  //工具栏 icon 每项之间的间隔
@@ -167,7 +167,7 @@
 				textStyle: {
 					color: '#ccc'
 				},
-			  show: false
+			  show: true
 			},
 			geo: {
 				map: 'china',
@@ -188,33 +188,38 @@
 				}
 			},
 			series: [
-				// {
-				// 	name: '上海',
-				// 	type: 'scatterGL',
-				// 	coordinateSystem: 'geo',
-				//   // The litter dot of size for china map
-				// 	symbolSize: 0.1,
-				// 	itemStyle: {
-				// 		shadowBlur: 2,
-				// 		shadowColor: 'rgba(14, 241, 242, 0.8)',
-				// 		color: 'rgba(14, 241, 242, 0.8)',
-				// 	},
-				// 	data: loginData[0],
-				// 	tooltip: {
-				// 		show: true
-				// 	},
-				// 	progressive: 1,
-				// 	progressiveThreshold: 1
-				// },
 				{
-					name: '北京',
+					name: '上海',
 					type: 'scatterGL',
 					coordinateSystem: 'geo',
+				  // The litter dot of size for china map
 					symbolSize: 0.1,
 					itemStyle: {
 						shadowBlur: 2,
-						shadowColor: 'rgba(37, 140, 249, 0.8)',
-						color: 'rgba(255, 255, 255, 0.8)'
+						shadowColor: 'rgba(14, 241, 242, 0.8)',
+						color: 'rgba(14, 241, 242, 0.8)',
+					},
+					data: loginData[0],
+					tooltip: {
+						show: true
+					},
+					progressive: 1,
+					progressiveThreshold: 1
+				},
+				{
+					name: '北京',
+					type: 'scatterGL',
+					showEffectOn: 'emphasis',
+					coordinateSystem: 'geo',
+					symbolSize: 1,
+					itemStyle: {
+						// shadowBlur: 2,
+						// shadowColor: 'rgba(37, 140, 249, 0.8)',
+						// color: 'rgba(255, 255, 255, 0.8)'
+
+						shadowBlur: 2,
+						shadowColor: 'rgba(14, 241, 242, 0.8)',
+						color: 'rgba(14, 241, 242, 0.8)',
 					},
 					data: loginData[1],
 					progressive: 3,
@@ -225,11 +230,39 @@
 		});
 		setTimeout(() => {
 			console.debug(loginChart);
+			for (let i = 0; i < 20; i++) {
+				jsonData[1].concat(jsonData[1]);
+			}
 			loginChart.appendData({
 				seriesIndex: '0',
-				data: jsonData[0]
+				data: jsonData[1]
+			});
+					// loginChart.appendData({
+					// 	seriesIndex: '0',
+					// 	data: jsonData[1]
+					// });
+					// loginChart.appendData({
+					// 	seriesIndex: '0',
+					// 	data: jsonData[1]
+					// });
+					// loginChart.appendData({
+					// 	seriesIndex: '0',
+					// 	data: jsonData[1]
+					// });
+			// loginData.concat(jsonData[0]);
+		    loginChart.setOption({
+			  title: {
+				  text: '2:2',
+				  subtext: '',
+				  left: 'left',
+				  top: 'bottom',
+				  textStyle: {
+					  color: '#fff'
+				  },
+				  show: true
+			  }
 			})
-		}, 3 * 1000)
+		}, 1 * 1000)
 	});
 	
 	
